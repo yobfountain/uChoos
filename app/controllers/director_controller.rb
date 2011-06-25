@@ -16,9 +16,12 @@ class DirectorController < ApplicationController
 
     next_room = DIRECTIONS[origin][digits]
     
-    redirect_to '/static/demo/rooms/' + next_room + '.xml'
-
-    # redirect_to "/static/hello.xml"
+    if next_room
+      redirect_to '/static/demo/rooms/' + next_room + '.xml'
+    else
+      @origin = origin
+      render 'bad'
+    end
   end
 
 end
