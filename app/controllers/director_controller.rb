@@ -20,7 +20,7 @@ class DirectorController < ApplicationController
       redirect_to '/static/demo/rooms/' + next_room + '.xml'
     else
       @origin = origin
-      render 'bad'
+      render 'director/bad.xml'
     end
   end
 
