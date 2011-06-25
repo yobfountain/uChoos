@@ -2,27 +2,23 @@ class DirectorController < ApplicationController
   
   skip_before_filter :verify_authenticity_token
   
-  # DIRECTIONS = [ 001 => ['002', '003'], 002 => ['001', '003'], 003 => ['001', '002'] ]
+  DIRECTIONS = { '001' => {'1' => '002','2' => '003'}, 
+                 '002' => {'1' => '001','2' => '003'},
+                 '003' => {'1' => '001','2' => '002'}
+               }
   
   def route
     origin = params[:origin]
-    destination = params[:Digits]
+    digits = params[:Digits]
     
-    case origin
-    when "001" && destination == "1"
-      redirect_to "/static/demo/rooms/002.xml"
-    when "001" && destination == "2"
-      redirect_to "/static/demo/rooms/003.xml"
-    when "002" && destination == "1"
-      redirect_to "/static/demo/rooms/001.xml"
-    when "002" && destination == "2"
-      redirect_to "/static/demo/rooms/003.xml"
-    when "003" && destination == "1"
-      redirect_to "/static/demo/rooms/001.xml"
-    when "003" && destination == "2"
-      redirect_to "/static/demo/rooms/002.xml"
-    end
+    puts 'origin' + origin
+    puts 'destination ' + destination
+
+    next_room = DIRECTIONS[origin][digits]
     
+    redirect_to '/static/demo/rooms/' + next_room + '.xml'
+
+    # redirect_to "/static/hello.xml"
   end
 
 end

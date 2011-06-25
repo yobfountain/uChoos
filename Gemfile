@@ -29,3 +29,7 @@ gem 'twilio'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+group :development do
+  gem 'ruby-debug'
+end
