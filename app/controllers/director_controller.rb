@@ -9,17 +9,17 @@ class DirectorController < ApplicationController
     destination = params[:Digits]
     
     case origin
-    when "001" and destination == "1"
+    when "001" && destination == "1"
       redirect "/static/demo/rooms/002.xml"
-    when "001" and destination == "2"
+    when "001" && destination == "2"
       redirect "/static/demo/rooms/003.xml"
-    when "002" and destination == "1"
+    when "002" && destination == "1"
       redirect "/static/demo/rooms/001.xml"
-    when "002" and destination == "2"
+    when "002" && destination == "2"
       redirect "/static/demo/rooms/003.xml"
-    when "003" and destination == "1"
+    when "003" && destination == "1"
       redirect "/static/demo/rooms/001.xml"
-    when "003" and destination == "2"
+    when "003" && destination == "2"
       redirect "/static/demo/rooms/002.xml"
     end
     
