@@ -11,8 +11,8 @@ class DirectorController < ApplicationController
     origin = params[:origin]
     digits = params[:Digits]
     
-    puts 'origin' + origin
-    puts 'destination ' + destination
+    puts 'origin: ' + origin
+    puts 'destination: ' + digits
 
     next_room = DIRECTIONS[origin][digits]
     
