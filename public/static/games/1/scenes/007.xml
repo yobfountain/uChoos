@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+        <Say>
+            This is Room Two.
+        </Say>
+    <Redirect method="GET">../choices/002.xml</Redirect>
+</Response>
