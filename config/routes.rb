@@ -10,6 +10,7 @@ Uchoos::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
   match 'director/route/:game/:scene' => 'director#route'
+  match 'director/set_sms' => 'director#set_sms'
   
   match 'api/twilio/voice' => 'api#twilio_voice'
   match 'api/twilio/sms' => 'api#twilio_sms'
