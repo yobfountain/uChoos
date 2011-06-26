@@ -3,5 +3,5 @@
         <Say>
             This is Room One.
         </Say>
-    <Redirect>../choices/001.xml</Redirect>
+    <Redirect method="GET">../choices/001.xml</Redirect>
 </Response>
