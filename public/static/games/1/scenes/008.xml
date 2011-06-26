@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
     <Play>/static/games/1/voice/scenes/008.mp3</Play>
+	<Sms>Great work! You completed the story. Everyone secretly loves you.</Sms>
     <Redirect method="GET">/static/games/1/choices/008.xml</Redirect>
 </Response>
