@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- page located at http://example.com/complex_gather.xml -->
 <Response>
     <Gather action="/director/route/1/001" method="GET">
         <Say>
