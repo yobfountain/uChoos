@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response> 
-    <Say>I'm placing you into the game.</Say>
+    <Play>/static/game_menu.mp3</Play>
 	 <Redirect method="GET">/static/games/1/scenes/001.xml</Redirect>
 </Response>
