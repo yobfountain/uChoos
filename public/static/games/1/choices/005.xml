@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-	<Redirect method="GET">/static/games/1/voice/scenes/004.mp3</Redirect>
+	<Redirect method="GET">/static/games/1/scenes/004.xml</Redirect>
 </Response>
