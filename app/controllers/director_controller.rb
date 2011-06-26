@@ -16,11 +16,11 @@ class DirectorController < ApplicationController
     # puts 'game: ' + game + '| scene: ' + scene + '| destination: ' + digits
     # puts 'from: ' + user
 
-    next_room = DIRECTIONS[scene][digits]
+    next_scene = DIRECTIONS[scene][digits]
     
-    if next_room
-      user.update_progress!(game, next_room)
-      redirect_to '/static/games/1/scenes/' + next_room + '.xml'
+    if next_scene
+      user.update_progress!(game, next_scene)
+      redirect_to '/static/games/1/scenes/' + next_scene + '.xml'
     else
       @scene = scene
       render 'director/bad.xml'

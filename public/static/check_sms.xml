@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <Response> 
-	<Gather action="/director/set_sms" method="GET">
+	<Gather numDigits = "1" action="/director/set_sms" method="GET">
     <Say>Is this phone capable of receiving text messages? Press 1 if it can. Press 2 if it can not.</Say>
 	</Gather>
 </Response>
