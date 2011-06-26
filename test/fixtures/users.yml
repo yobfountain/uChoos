@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  mobile_number: MyString
+  name: MyString
+  can_text: false
+  last_game: MyString
+  last_scene: MyString
+
+two:
+  mobile_number: MyString
+  name: MyString
+  can_text: false
+  last_game: MyString
+  last_scene: MyString

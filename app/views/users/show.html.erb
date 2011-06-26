@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mobile number:</b>
+  <%= @user.mobile_number %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Can text:</b>
+  <%= @user.can_text %>
+</p>
+
+<p>
+  <b>Last game:</b>
+  <%= @user.last_game %>
+</p>
+
+<p>
+  <b>Last scene:</b>
+  <%= @user.last_scene %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

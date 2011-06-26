@@ -8,20 +8,47 @@ class DirectorController < ApplicationController
                }
   
   def route
-    origin = params[:origin]
+    game = params[:game]
+    scene = params[:scene]
     digits = params[:Digits]
+    user = User.find_by_mobile_number(params[:From])
     
-    puts 'origin: ' + origin
-    puts 'destination: ' + digits
+    puts 'game: ' + game '| scene: ' + scene '| destination: ' + digits
+    puts 'from: ' + user
 
-    next_room = DIRECTIONS[origin][digits]
+    next_room = DIRECTIONS[scene][digits]
     
     if next_room
-      redirect_to '/static/demo/rooms/' + next_room + '.xml'
+      user.update_progress!(game, next_room)
+      redirect_to '/static/games/1/scenes/' + next_room + '.xml'
     else
-      @origin = origin
+      @scene = scene
       render 'director/bad.xml'
     end
+  end
+  
+  def set_sms
+    digits = params[:Digits]
+    user = User.find_by_mobile_number(params[:From])
+  
+    if digits == "1"
+      user.can_text = true
+      user.save
+      render 'static/game_menu.xml'
+    elsif digits == "2"
+      user.can_text = false
+      user.save
+      render 'static/game_menu.xml'
+    else
+      #TODO make this more intelligent
+      render 'static/check_sms.xml'
+    end
+  end
+  
+  def update_progress!(game, next_room)
+    self.last_scene = next_room
+    self.last_game = game
+    self.save
   end
 
 end

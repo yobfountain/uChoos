@@ -1,0 +1,31 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Mobile number</th>
+    <th>Name</th>
+    <th>Can text?</th>
+    <th>last game</th>
+	<th>last scene</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.mobile_number %></td>
+    <td><%= user.name %></td>
+    <td><%= user.can_text %></td>
+    <td><%= user.last_game %></td>
+	<td><%= user.last_scene %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>

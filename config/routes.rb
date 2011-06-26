@@ -1,4 +1,6 @@
 Uchoos::Application.routes.draw do
+  resources :users
+
   get "director/route"
 
   # The priority is based upon order of creation:
@@ -7,7 +9,10 @@ Uchoos::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-  match 'director/route/:origin' => 'director#route'
+  match 'director/route/:game/:scene' => 'director#route'
+  
+  match 'api/twilio/voice' => 'api#twilio_voice'
+  match 'api/twilio/sms' => 'api#twilio_sms'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
