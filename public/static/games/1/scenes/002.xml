@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- page located at http://example.com/complex_gather.xml -->
 <Response>
-    <Gather numDigits = "1" action="/director/route/1/002" method="GET">
         <Say>
-            This is Room Two. Press 1 to go to room 1. Press 2 to go to room 3.
+            This is Room Two.
         </Say>
-    </Gather>
-    <Say>I don't understand. Goodbye!</Say>
+    <Redirect>../choices/002.xml</Redirect>
 </Response>
