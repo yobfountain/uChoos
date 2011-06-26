@@ -13,8 +13,8 @@ class DirectorController < ApplicationController
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
     
-    puts 'game: ' + game + '| scene: ' + scene + '| destination: ' + digits
-    puts 'from: ' + user
+    # puts 'game: ' + game + '| scene: ' + scene + '| destination: ' + digits
+    # puts 'from: ' + user
 
     next_room = DIRECTIONS[scene][digits]
     
