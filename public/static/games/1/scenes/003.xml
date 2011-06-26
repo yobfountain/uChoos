@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
     <Play>/static/games/1/voice/scenes/003.mp3</Play>
-    <Redirect method="GET">../choices/003.xml</Redirect>
+    <Redirect method="GET">/static/games/1/choices/003.xml</Redirect>
 </Response>
