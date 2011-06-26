@@ -44,11 +44,5 @@ class DirectorController < ApplicationController
       render 'static/check_sms.xml'
     end
   end
-  
-  def update_progress!(game, next_room)
-    self.last_scene = next_room
-    self.last_game = game
-    self.save
-  end
 
 end
