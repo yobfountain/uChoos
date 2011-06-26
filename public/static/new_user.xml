@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <Response> 
     <Say>Welcome to you choose. A world where you decide how the story is told. I don't believe we have met.</Say>
-	 <Redirect method="GET">static/check_sms.xml</Redirect>
+	 <Redirect method="GET">/static/check_sms.xml</Redirect>
 </Response>
