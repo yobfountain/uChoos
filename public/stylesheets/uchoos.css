@@ -1,0 +1,93 @@
+body {
+	background: #f7fbff;
+}
+
+#content {
+	margin: auto;
+	margin-top: 15px;
+	width:500px;
+	border: 5px solid #678197;
+	padding: 2em;
+	background: #fff;
+	font: 13px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+	
+h3 {
+	font: 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 2em;
+	color: #678197;
+	margin: 0 0 1em 0;
+	padding: 0;
+	text-transform: uppercase;
+}
+
+h4 {
+	margin-bottom: 0px;
+	font: 11px bold "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	color: #678197;
+}
+
+hr {
+	color: #678197;
+	margin-top: 10px;
+}
+
+#nav {
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom 10px;
+	width: 500px;
+}
+
+#game_nav {
+	background: #f4f9fe;
+	padding: .5em .75em;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+}
+
+table {
+	width:100%;
+	margin:1em auto;
+	border-collapse:collapse;
+}
+
+td {
+	color:#678197;
+	border-bottom:1px solid #e5eff8;
+	border-left:1px solid #e5eff8;
+	border-right:1px solid #e5eff8;
+	padding:.3em 1em;
+	text-align:left;
+}
+
+th {
+	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
+	sans-serif;
+	color: #6D929B;
+	border-right: 1px solid #e5eff8;
+	border-bottom: 1px solid #C1DAD7;
+	border-left: 1px solid #e5eff8;
+	border-top: 1px solid #C1DAD7;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #f4f9fe;
+}
+
+
+tr.even td{
+	background:#fff;
+	padding: 6px 6px 6px 12px;
+}
+
+tr.odd td{
+	background:#f7fbff;
+	padding: 6px 6px 6px 12px;
+}
+
+input {
+	margin-bottom: 6px;
+}
