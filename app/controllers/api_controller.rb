@@ -12,7 +12,7 @@ class ApiController < ApplicationController
       redirect_to '/static/new_user.xml'
     else
       if user.last_game and user.last_scene
-        render '/static/games/' + user.last_game + '/scenes/' + user.last_scene + '.xml'
+        redirect_to '/static/games/' + user.last_game + '/scenes/' + user.last_scene + '.xml'
       else
         redirect_to '/static/games/1/scenes/001.xml'
       end
