@@ -6,5 +6,5 @@
         </Say>
     </Gather>
     <Say>Please enter a choice!</Say>
-	<Redirect method="GET">/choices/001.xml</Redirect>
+	<Redirect method="GET">/static/games/1/choices/001.xml</Redirect>
 </Response>
