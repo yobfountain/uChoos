@@ -34,14 +34,14 @@ class DirectorController < ApplicationController
     if digits == "1"
       user.can_text = true
       user.save
-      render 'static/game_menu.xml'
+      render '/static/game_menu.xml'
     elsif digits == "2"
       user.can_text = false
       user.save
-      render 'static/game_menu.xml'
+      render '/static/game_menu.xml'
     else
       #TODO make this more intelligent
-      render 'static/check_sms.xml'
+      render '/static/check_sms.xml'
     end
   end
 
