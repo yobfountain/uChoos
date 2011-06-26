@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-        <Say>
-            This is Room One.
-        </Say>
-    <Redirect method="GET">../choices/001.xml</Redirect>
+        <Play>/static/games/1/voice/scenes/001.mp3</Play>
+    <Redirect method="GET">../choices/001c.xml</Redirect>
 </Response>

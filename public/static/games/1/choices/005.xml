@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Gather numDigits = "1" action="/director/route/1/001" method="GET">
-        <Say>
-            Press 1 to go to room 2. Press 2 to go to room 3.
-        </Say>
-    </Gather>
-    <Say>Please enter a choice!</Say>
-	<Redirect method="GET">/static/games/1/choices/001.xml</Redirect>
+	<Redirect method="GET">/static/games/1/voice/scenes/004.mp3</Redirect>
 </Response>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Gather numDigits = "1" action="/director/route/1/003" method="GET">
+    <Gather numDigits = "1" action="/director/route/1/008" method="GET">
         <Say>
             Press 1 to go to room 1. Press 2 to go to room 2.
         </Say>
