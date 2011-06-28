@@ -5,7 +5,7 @@
     <th>User</th>
     <th>Name</th>
     <th>Can text?</th>
-    <th>bookmark</th>
+    <th>save</th>
     <th></th>
     <th></th>
   </tr>
@@ -18,7 +18,7 @@
 	<% if user.last_game.blank? or user.last_scene.blank? %>
 	<td>none</td>
 	<% else %>
-    <td><%= user.last_game %> : <%= user.last_scene %></td>
+    <td><%= user.last_game %>.<%= user.last_scene %></td>
 	<% end %>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'X', user, :confirm => 'Are you sure?', :method => :delete %></td>
