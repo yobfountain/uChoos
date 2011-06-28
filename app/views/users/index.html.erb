@@ -2,24 +2,24 @@
 
 <table>
   <tr>
-    <th>Mobile number</th>
+    <th>User</th>
     <th>Name</th>
     <th>Can text?</th>
-    <th>last game</th>
-	<th>last scene</th>
-    <th></th>
+    <th>bookmark</th>
     <th></th>
     <th></th>
   </tr>
 
-<% @users.each do |user| %>
+<% @users.each_with_index do |user, count| %>
   <tr>
-    <td><%= user.mobile_number %></td>
+    <td><%= link_to "User #{count + 1}", user %></td>
     <td><%= user.name %></td>
     <td><%= user.can_text %></td>
-    <td><%= user.last_game %></td>
-	<td><%= user.last_scene %></td>
-    <td><%= link_to 'Show', user %></td>
+	<% if user.last_game.blank? or user.last_scene.blank? %>
+	<td>none</td>
+	<% else %>
+    <td><%= user.last_game %> : <%= user.last_scene %></td>
+	<% end %>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'X', user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

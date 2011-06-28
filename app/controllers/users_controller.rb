@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
+  
+  USER_NAME, PASSWORD = "fountain", "t3mpor"
+
+  before_filter :authenticate, :except => [ :index ]
+  
+  
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
+    @users = User.find(:all, :order => "created_at")
+    @count = 1
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +87,12 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+      def authenticate
+        authenticate_or_request_with_http_basic do |user_name, password|
+          user_name == USER_NAME && password == PASSWORD
+        end
+      end
+  
 end
