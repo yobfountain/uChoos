@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Story:</b>
+  <%= @scene.story_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @scene.name %>
+</p>
+
+<p>
+  <b>Scene text:</b>
+  <%= @scene.scene_text %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @scene.order %>
+</p>
+
+<p>
+  <b>Scene audio:</b>
+  <%= @scene.scene_audio %>
+</p>
+
+<p>
+  <b>Choice text:</b>
+  <%= @scene.choice_text %>
+</p>
+
+<p>
+  <b>Choice audio:</b>
+  <%= @scene.choice_audio %>
+</p>
+
+<p>
+  <b>Option one:</b>
+  <%= @scene.option_one %>
+</p>
+
+<p>
+  <b>Option two:</b>
+  <%= @scene.option_two %>
+</p>
+
+
+<%= link_to 'Edit', edit_scene_path(@scene) %> |
+<%= link_to 'Back', scenes_path %>

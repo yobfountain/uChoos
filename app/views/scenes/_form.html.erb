@@ -1,0 +1,53 @@
+<%= form_for(@scene) do |f| %>
+  <% if @scene.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scene.errors.count, "error") %> prohibited this scene from being saved:</h2>
+
+      <ul>
+      <% @scene.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :story_id %><br />
+    <%= f.text_field :story_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :scene_text %><br />
+    <%= f.text_area :scene_text %>
+  </div>
+  <div class="field">
+    <%= f.label :order %><br />
+    <%= f.text_field :order %>
+  </div>
+  <div class="field">
+    <%= f.label :scene_audio %><br />
+    <%= f.text_field :scene_audio %>
+  </div>
+  <div class="field">
+    <%= f.label :choice_text %><br />
+    <%= f.text_area :choice_text %>
+  </div>
+  <div class="field">
+    <%= f.label :choice_audio %><br />
+    <%= f.text_field :choice_audio %>
+  </div>
+  <div class="field">
+    <%= f.label :option_one %><br />
+    <%= f.text_field :option_one %>
+  </div>
+  <div class="field">
+    <%= f.label :option_two %><br />
+    <%= f.text_field :option_two %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

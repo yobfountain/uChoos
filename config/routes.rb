@@ -1,4 +1,8 @@
 Uchoos::Application.routes.draw do
+  resources :scenes
+
+  resources :stories
+
   resources :users
 
   get "director/route"

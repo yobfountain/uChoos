@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  story_id: 1
+  name: MyString
+  scene_text: MyText
+  order: 1
+  scene_audio: MyString
+  choice_text: MyText
+  choice_audio: MyString
+  option_one: 1
+  option_two: 1
+
+two:
+  story_id: 1
+  name: MyString
+  scene_text: MyText
+  order: 1
+  scene_audio: MyString
+  choice_text: MyText
+  choice_audio: MyString
+  option_one: 1
+  option_two: 1

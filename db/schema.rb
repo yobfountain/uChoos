@@ -10,7 +10,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110626011211) do
+ActiveRecord::Schema.define(:version => 20110628145841) do
+
+  create_table "scenes", :force => true do |t|
+    t.integer  "story_id"
+    t.string   "name"
+    t.text     "scene_text"
+    t.integer  "order"
+    t.string   "scene_audio"
+    t.string   "scene_audio_duration"
+    t.text     "choice_text"
+    t.string   "choice_audio"
+    t.string   "choice_audio_duration"
+    t.integer  "option_one"
+    t.integer  "option_two"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stories", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "keyword"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "mobile_number"
