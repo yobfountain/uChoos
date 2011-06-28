@@ -10,6 +10,8 @@ class ApiController < ApplicationController
       user.mobile_number = mobile_number
       user.save!
       redirect_to '/static/new_user.xml'
+    elsif user.can_text.nil?
+      redirect_to '/static/check_sms.xml'
     else
       if user.last_game and user.last_scene
         redirect_to '/static/games/' + user.last_game + '/scenes/' + user.last_scene + '.xml'
