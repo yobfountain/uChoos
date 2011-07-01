@@ -43,7 +43,7 @@ class DirectorController < ApplicationController
       render_scene(story, next_scene)
       return
     else
-      redirect = "director/choice/" + story.id.to_s + "/" + scene
+      redirect = "director/choice/" + story.id.to_s + "/" + scene.to_s
       # create repsonse
       @r = Twilio::Response.new
       # wrap with gather tag
