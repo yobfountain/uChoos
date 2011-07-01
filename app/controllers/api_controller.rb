@@ -22,9 +22,11 @@ class ApiController < ApplicationController
       puts "Last Game: " + user.last_game
       puts "Last scene: " + user.last_scene
       if user.last_game
+        puts "Redirecting to last game"
         redirect_to '/director/router/' + user.last_game + '/' + user.last_scene
       else
         # TODO fix this hack once menu is set up
+        puts "No existing game found. Redirecting to story menu"
         redirect_to '/director/story_menu'
       end
     else
