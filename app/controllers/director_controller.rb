@@ -22,6 +22,7 @@ class DirectorController < ApplicationController
     scene_index = scene.to_i - 1
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
+    redirect = ""
 
     if digits
       if digits == "1"
@@ -31,6 +32,7 @@ class DirectorController < ApplicationController
       else
         next_scene = nil
       end
+      return
     else
       render_scene(story, scene)
       return
