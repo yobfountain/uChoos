@@ -23,15 +23,17 @@ class DirectorController < ApplicationController
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
     redirect = ""
+    next_scene = nil
 
-    puts "Data: " + scene
+    puts "Scene: " + scene
+    puts "Digits: "
     
     if digits
       if digits == "1"
         puts "inside digit 1"
         next_scene = story.scenes[scene_index].option_one.to_s
         puts "next_scene: " + next_scene
-        return next_scene
+        next_scene
       elsif digits == "2"
         puts "inside digit 2"
         next_scene = story.scenes[scene_index].option_two.to_s
@@ -39,13 +41,12 @@ class DirectorController < ApplicationController
         puts "inside no digit found"
         next_scene = nil
       end
-      return
     else
       puts "gonna no digits scene"
       render_scene(story, scene)
       return
     end
-
+    
     if next_scene
       puts "found next_scene"
       user.save_progress!(story, next_scene)
@@ -59,7 +60,7 @@ class DirectorController < ApplicationController
       # wrap with gather tag
       @r.append(Twilio::Say.new("I didn't understand your response!", :voice => "man"))
       # redirect to choice menu    
-      @r.append(Twilio::Redirect.new("#{redirect}", :method => "GET"))
+      @r.append(Twilio::Redirect.new(redirect, :method => "GET"))
 
       puts "Unknown Choice: " + @r.respond
       render :xml => @r.respond
