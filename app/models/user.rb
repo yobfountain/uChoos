@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
     self.save
   end
   
+  def save_progress!(story, next_scene)
+    self.last_scene = next_scene
+    self.last_game = story
+    self.save
+  end
+  
 end

@@ -1,18 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @story.user_id %>
+  <b><%= @story.name %></b> by <%= @story.user.name if @story.user.name %>
 </p>
 
 <p>
   <b>Keyword:</b>
   <%= @story.keyword %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @story.name %>
 </p>
 
 <p>
@@ -24,6 +18,16 @@
   <b>Active:</b>
   <%= @story.active %>
 </p>
+
+<p>
+  <b>Scenes</b>
+  (<%= @story.scenes.size %>)
+</p>
+	<ol>
+		<% @story.scenes.each do |scene| %>
+		<li><%= scene.name %> (<%= scene.option_one %>, <%= scene.option_two %>)</li>
+		<% end %>
+	</ol>
 
 
 <%= link_to 'Edit', edit_story_path(@story) %> |

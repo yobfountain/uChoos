@@ -13,8 +13,14 @@ Uchoos::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
+  
+  # old route
   match 'director/route/:game/:scene' => 'director#route'
+  
+  match 'director/router/:story/:scene' => 'director#router'
+  match 'director/choice/:story/:scene' => 'director#render_choice'
   match 'director/set_sms' => 'director#set_sms'
+  match 'director/story_menu' => 'director#story_menu'
   
   match 'api/twilio/voice' => 'api#twilio_voice'
   match 'api/twilio/sms' => 'api#twilio_sms'

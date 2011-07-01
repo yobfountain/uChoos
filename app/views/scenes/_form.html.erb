@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :scene_text %><br />
-    <%= f.text_area :scene_text %>
+    <%= text_area(:scene, :scene_text, :size => "66x20") %>
   </div>
   <div class="field">
     <%= f.label :order %><br />
@@ -29,15 +29,15 @@
   </div>
   <div class="field">
     <%= f.label :scene_audio %><br />
-    <%= f.text_field :scene_audio %>
+    <%= text_field(:scene, :scene_audio, :size => "92x3") %>
   </div>
   <div class="field">
     <%= f.label :choice_text %><br />
-    <%= f.text_area :choice_text %>
+    <%= text_area(:scene, :choice_text, :size => "66x5") %>
   </div>
   <div class="field">
     <%= f.label :choice_audio %><br />
-    <%= f.text_field :choice_audio %>
+    <%= text_field(:scene, :choice_audio, :size => "92x3") %>
   </div>
   <div class="field">
     <%= f.label :option_one %><br />

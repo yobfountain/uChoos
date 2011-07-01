@@ -1,31 +1,28 @@
-<h1>Listing stories</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Keyword</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Active</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @stories.each do |story| %>
-  <tr>
-    <td><%= story.user_id %></td>
-    <td><%= story.keyword %></td>
-    <td><%= story.name %></td>
-    <td><%= story.description %></td>
-    <td><%= story.active %></td>
-    <td><%= link_to 'Show', story %></td>
-    <td><%= link_to 'Edit', edit_story_path(story) %></td>
-    <td><%= link_to 'Destroy', story, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<h3>Listing stories</h3>
 
 <%= link_to 'New Story', new_story_path %>
+
+<br /> <hr />
+
+<% @stories.each do |story| %>
+
+ <div id="story">
+	<%= link_to "#{story.name}", story %><%=  %> (<%= story.keyword %>) by
+	<% if story.user.name %>
+	<td><%= story.user.name %></td>
+	<% else %>
+    <td><%= story.user_id %></td>
+	<% end %>
+	| <%= story.active %> | 
+	<% if story.scenes %>
+	Scenes (<%= story.scenes.size %>)
+	<% else %>
+	No scenes yet
+	<% end %>
+	<p><strong>Description:</strong> <%= story.description %></p>
+    <%= link_to 'Edit', edit_story_path(story) %> |
+    <%= link_to 'Destroy', story, :confirm => 'Are you sure?', :method => :delete %>
+	<br /> <hr />
+<% end %>
+</div>
+

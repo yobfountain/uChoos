@@ -1,39 +1,18 @@
 <h1>Listing scenes</h1>
 
-<table>
-  <tr>
-    <th>Story</th>
-    <th>Name</th>
-    <th>Scene text</th>
-    <th>Order</th>
-    <th>Scene audio</th>
-    <th>Choice text</th>
-    <th>Choice audio</th>
-    <th>Option one</th>
-    <th>Option two</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to 'New Scene', new_scene_path %>
+<br /> <hr />
 
 <% @scenes.each do |scene| %>
-  <tr>
-    <td><%= scene.story_id %></td>
-    <td><%= scene.name %></td>
-    <td><%= scene.scene_text %></td>
-    <td><%= scene.order %></td>
-    <td><%= scene.scene_audio %></td>
-    <td><%= scene.choice_text %></td>
-    <td><%= scene.choice_audio %></td>
-    <td><%= scene.option_one %></td>
-    <td><%= scene.option_two %></td>
-    <td><%= link_to 'Show', scene %></td>
-    <td><%= link_to 'Edit', edit_scene_path(scene) %></td>
-    <td><%= link_to 'Destroy', scene, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div id="story">
+    <p><strong><%= scene.name %></strong> (<%= link_to 'audio', scene.scene_audio %>) <br />
+	<%= scene.scene_text %></p>
+	<p><strong>Choice</strong> (<%= link_to 'audio', scene.choice_audio %>) <br />
+	<%= scene.choice_text %></p>
+    Option one: <%= scene.option_one %> | 
+    Option two: <%= scene.option_two %> | 
+    <%= link_to 'Show', scene %></td> |
+    <%= link_to 'Edit', edit_scene_path(scene) %> |
+    <%= link_to 'Destroy', scene, :confirm => 'Are you sure?', :method => :delete %>
+	<hr />
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Scene', new_scene_path %>
