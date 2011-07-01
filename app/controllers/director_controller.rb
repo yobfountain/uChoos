@@ -23,8 +23,6 @@ class DirectorController < ApplicationController
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
 
-    # story.scenes.find(scene)
-
     if digits
       if digits == "1"
         next_scene = story.scenes[scene_index].option_one.to_s
@@ -98,20 +96,32 @@ class DirectorController < ApplicationController
   def render_scene(story, scene)
     route = "director/router/" + story.id.to_s + "/" + scene
     redirect = "director/choice/" + story.id.to_s + "/" + scene
+    choiceless_redirect = "director/router/" + story.id.to_s + "/" + story.scenes[scene.to_i - 1].option_one.to_s
     # create repsonse
     @r = Twilio::Response.new
     # play scene audio
     @r.append(Twilio::Play.new(story.scenes[scene.to_i - 1].scene_audio))
-    # wrap with gather tag
-    @g = @r.append(Twilio::Gather.new(:numDigits => "1", :action => route, :method => "GET", :timeout => "6"))
-    # play choice audio
-    @g.append(Twilio::Play.new(story.scenes[scene.to_i - 1].choice_audio))
-    # add response for no answer
-    @r.append(Twilio::Say.new("Please enter a choice!", :voice => "man"))
-    # redirect to choice menu    
-    @r.append(Twilio::Redirect.new(redirect, :method => "GET"))
+    
+    # Check to see if the scene only has one path
+    if story.scenes[scene.to_i - 1].choiceless?
+      @r.append(Twilio::Redirect.new(choiceless_redirect, :method => "GET"))
+      puts "Choiceless: " + @r.respond
+    elsif story.scenes[scene.to_i - 1].final?
+      @r.append(Twilio::Sms.new(story.scenes[scene.to_i - 1].choice_text))
+      @r.append(Twilio::Hangup.new())
+      puts "Final: " + @r.respond
+    else
+      # wrap with gather tag
+      @g = @r.append(Twilio::Gather.new(:numDigits => "1", :action => route, :method => "GET", :timeout => "6"))
+      # play choice audio
+      @g.append(Twilio::Play.new(story.scenes[scene.to_i - 1].choice_audio))
+      # add response for no answer
+      @r.append(Twilio::Say.new("Please enter a choice!", :voice => "man"))
+      # redirect to choice menu    
+      @r.append(Twilio::Redirect.new(redirect, :method => "GET"))
+      puts "Scene: " + @r.respond
+    end
 
-    puts "Scene: " + @r.respond
     render :xml => @r.respond
   end
 
