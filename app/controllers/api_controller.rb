@@ -15,12 +15,12 @@ class ApiController < ApplicationController
       redirect_to '/static/check_sms.xml'
     else
       if twilio_number == STAGING_NUMBER
-        if user.last_game or !user.last_game.blank?
-          redirect_to '/director/router/' + user.last_game + '/' + user.last_scene
-          return
-        else
+        unless user.last_game or user.last_game.blank?
           # TODO fix this hack once menu is set up
           redirect_to '/director/story_menu'
+          return
+        else
+          redirect_to '/director/router/' + user.last_game + '/' + user.last_scene
           return
         end
       else
