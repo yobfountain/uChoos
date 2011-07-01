@@ -15,7 +15,7 @@ class ApiController < ApplicationController
       redirect_to '/static/check_sms.xml'
     else
       if twilio_number == STAGING_NUMBER
-        if user.last_game and user.last_scene
+        if user.last_game or !user.last_game.blank?
           redirect_to '/director/router/' + user.last_game + '/' + user.last_scene
           return
         else
