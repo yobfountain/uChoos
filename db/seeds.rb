@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+ story = Story.create([id: 1, user_id: 5, keyword: "evil", name: "Evil Mountain", description: "You and a companion must summit the most dreadful m...", active: false])
+ 
