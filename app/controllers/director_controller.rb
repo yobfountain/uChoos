@@ -15,7 +15,7 @@ class DirectorController < ApplicationController
     '009' => {'1' => '008','2' => '001'},
   }
 
-  #TODO catch exception for when there is no scne for that game
+  #TODO catch exception for when there is no scene for that game
   def router
     story = Story.find_by_id(params[:story])
     scene = params[:scene]
@@ -43,7 +43,7 @@ class DirectorController < ApplicationController
       render_scene(story, next_scene)
       return
     else
-      redirect = "director/choice/" + story.id.to_s + "/" + scene.to_s
+      redirect = "/director/choice/#{story.id.to_s}/#{scene.to_s}"
       # create repsonse
       @r = Twilio::Response.new
       # wrap with gather tag
