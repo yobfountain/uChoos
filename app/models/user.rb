@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
   end
   
   def save_progress!(story, next_scene)
+    puts 'setting saved progress'
     self.last_scene = next_scene
-    self.last_game = story
+    self.last_game = story.id
     self.save
   end
   

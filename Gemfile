@@ -31,6 +31,6 @@ gem 'twiliolib'
 # end
 
 group :development do
-  # gem 'ruby-debug'
+  gem 'ruby-debug19'
   # gem 'heroku_san'
 end
