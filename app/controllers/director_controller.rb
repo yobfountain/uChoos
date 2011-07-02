@@ -26,7 +26,11 @@ class DirectorController < ApplicationController
     next_scene = nil
 
     puts "Scene: " + scene
-    puts "Digits: " + digits
+    if digits
+      puts "Digits: " + digits
+    else
+      puts "No digits in params"
+    end
     
     if digits
       if digits == "1"
