@@ -20,26 +20,17 @@ class ApiController < ApplicationController
     end
     
     # route the player to the proper starting point
-    if twilio_number == STAGING_NUMBER
-      if user.last_game && user.last_scene
-        puts "Last Game: " + user.last_game
-        puts "Last scene: " + user.last_scene
-      end
-      if user.last_game and !user.last_game.blank?
-        puts "Redirecting to last game"
-        redirect_to '/director/router/' + user.last_game + '/' + user.last_scene
-      else
-        # TODO fix this hack once menu is set up
-        puts "No existing game found. Redirecting to story menu"
-        redirect_to '/director/story_menu'
-      end
+    if user.last_game && user.last_scene
+      puts "Last Game: " + user.last_game
+      puts "Last scene: " + user.last_scene
+    end
+    if user.last_game and !user.last_game.blank?
+      puts "Redirecting to last game"
+      redirect_to '/director/router/' + user.last_game + '/' + user.last_scene
     else
-      # TODO delete after building alternate system
-      if user.last_game and user.last_scene
-        redirect_to '/static/games/' + user.last_game + '/scenes/' + user.last_scene + '.xml'
-      else
-        redirect_to '/static/games/1/scenes/001.xml'
-      end
+      # TODO fix this hack once menu is set up
+      puts "No existing game found. Redirecting to story menu"
+      redirect_to '/director/story_menu'
     end
 
   end

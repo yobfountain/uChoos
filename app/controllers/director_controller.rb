@@ -2,19 +2,6 @@ class DirectorController < ApplicationController
 
   skip_before_filter :verify_authenticity_token
 
-  # hard coded directions for prototype
-  DIRECTIONS = { 
-    '001' => {'1' => '002','2' => '003'}, 
-    '002' => {'1' => '004','2' => '005'},
-    '003' => {'1' => '002','2' => '001'},
-    '004' => {'1' => '007','2' => '006'},
-    '005' => {'1' => '001','2' => '003'},
-    '006' => {'1' => '007','2' => '003'},
-    '007' => {'1' => '008','2' => '009'},
-    '008' => {'1' => '001','2' => '001'},
-    '009' => {'1' => '008','2' => '001'},
-  }
-
   #TODO catch exception for when there is no scene for that game
   def router
     story = Story.find_by_id(params[:story])
@@ -206,24 +193,5 @@ class DirectorController < ApplicationController
       next_scene
     end
   end
-  
-  # TODO delete after building alternate system
-  def route
-    game = params[:game]
-    scene = params[:scene]
-    digits = params[:Digits]
-    user = User.find_by_mobile_number(params[:From])
-
-    next_scene = DIRECTIONS[scene][digits]
-
-    if next_scene
-      user.update_progress!(game, next_scene)
-      redirect_to '/static/games/1/scenes/' + next_scene + '.xml'
-    else
-      @scene = scene
-      render 'director/bad.xml'
-    end
-  end
-  
 
 end

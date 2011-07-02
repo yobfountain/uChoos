@@ -2,25 +2,48 @@
 <html>
 <head>
   <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
+<style type="text/css">
+/* Remove margins from the 'html' and 'body' tags, and ensure the page takes up full screen height */
+html, body {height:100%; margin:0; padding:0;}
 
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	color:#FFF;
+	background-color: #039;
+	font-size: 20px;
+}
+
+#content {
+	width: 550px;
+	margin: auto;
+	text-align:center;
+}
+
+h1 {
+	font-size:30px;
+	font-style: italic;
+}
+
+/* Set the position and dimensions of the background image. */
+#page-background {position:fixed; top:0; left:0; width:100%; height:100%;}
+/* Specify the position and layering for the content that needs to appear in front of the background image. Must have a higher z-index value than the background image. Also add some padding to compensate for removing the margin from the 'html' and 'body' tags. */
+#content {position:relative; z-index:1; padding:10px;}
+</style>
+<!-- The above code doesn't work in Internet Explorer 6. To address this, we use a conditional comment to specify an alternative style sheet for IE 6 -->
+<!--[if IE 6]>
+<style type="text/css">
+html {overflow-y:hidden;}
+body {overflow-y:auto;}
+#page-background {position:absolute; z-index:-1;}
+#content {position:static;padding:10px;}
+</style>
+<![endif]-->
+</head>
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
-    <p>We've been notified about this issue and we'll take a look at it shortly.</p>
-  </div>
+	<div id="page-background"><img src="images/uchoos_bg_768px_062611.jpg" width="100%" height="100%" alt="starry night"></div>
+	<div id="content">
+        <h1><img src="images/uchoos_logo.png" width="323" height="63" alt="uChoos" style="margin: 80px 0px 50px 0px;"></h1>
+        <p style="text-align: center; line-height: 32px;">It looks like something went wrong.<br />We'll have our people look into it.</p>
+	</div>
 </body>
 </html>
