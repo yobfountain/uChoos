@@ -18,3 +18,5 @@ End option should have no options. Fill in sms message for choice.
 
 TODO
 add sms menu features
+only list active stories
+modify system so that more than two choices can exist
