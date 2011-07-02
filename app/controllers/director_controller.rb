@@ -108,8 +108,8 @@ class DirectorController < ApplicationController
   end
 
   def render_scene(story, scene)
-    route = "director/router/" + story.id.to_s + "/" + scene
-    redirect = "director/choice/" + story.id.to_s + "/" + scene
+    route = "/director/router/" + story.id.to_s + "/" + scene
+    redirect = "/director/choice/" + story.id.to_s + "/" + scene
     choiceless_redirect = "director/router/" + story.id.to_s + "/" + story.scenes[scene.to_i - 1].option_one.to_s
     # create repsonse
     @r = Twilio::Response.new
@@ -147,8 +147,8 @@ class DirectorController < ApplicationController
     
     puts "inside render_choice"
     
-    route = "director/router/" + story.id.to_s + "/" + scene
-    redirect = "director/choice/" + story.id.to_s + "/" + scene
+    route = "/director/router/" + story.id.to_s + "/" + scene
+    redirect = "/director/choice/" + story.id.to_s + "/" + scene
     
     puts "route: " + route
     puts "redirect: " + redirect

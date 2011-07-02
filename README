@@ -9,3 +9,9 @@ Coming from scene 1 With Digit 1
 
 Coming from scene 1 With Bad Digit
 /director/router/1/1?Digits=3&AccountSid=AC0d3d975efe62587e3d304fd2b5723816&Called=%2B15124002020&Direction=inbound&CallSid=CAd7918bf4f9f37d315f32602a8fb6442c&From=%2B19174537966&CallStatus=ringing&To=%2B15124002020&ApiVersion=2010-04-01&Caller=%2B19174537966
+
+
+Notes
+Choiceless option must be in option one.
+
+End option should have no options. Fill in sms message for choice.
