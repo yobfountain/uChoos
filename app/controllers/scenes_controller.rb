@@ -2,7 +2,7 @@ class ScenesController < ApplicationController
   # GET /scenes
   # GET /scenes.xml
   def index
-    @scenes = Scene.all
+    @scenes = Scene.find(:all, :order => "id ASC")
 
     respond_to do |format|
       format.html # index.html.erb

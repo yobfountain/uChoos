@@ -22,7 +22,6 @@ class DirectorController < ApplicationController
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
     redirect = ""
-    # next_scene = nil
 
     puts "Scene: " + scene
     puts "Digits: "
@@ -156,7 +155,7 @@ class DirectorController < ApplicationController
   end
   
   def get_next_scene(digits, story, scene)
-    
+    next_scene = nil
     scene_index = scene.to_i - 1
     
     if digits == "1"
