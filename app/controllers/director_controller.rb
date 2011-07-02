@@ -26,7 +26,7 @@ class DirectorController < ApplicationController
     next_scene = nil
 
     puts "Scene: " + scene
-    puts "Digits: "
+    puts "Digits: " + digits
     
     if digits
       if digits == "1"
@@ -37,9 +37,10 @@ class DirectorController < ApplicationController
       elsif digits == "2"
         puts "inside digit 2"
         next_scene = story.scenes[scene_index].option_two.to_s
+        puts "next_scene: " + next_scene
         next_scene
       else
-        puts "inside no digit found"
+        puts "inside no scene matches that digit"
         next_scene
       end
     else
@@ -111,7 +112,7 @@ class DirectorController < ApplicationController
   def render_scene(story, scene)
     route = "/director/router/" + story.id.to_s + "/" + scene
     redirect = "/director/choice/" + story.id.to_s + "/" + scene
-    choiceless_redirect = "director/router/" + story.id.to_s + "/" + story.scenes[scene.to_i - 1].option_one.to_s
+    choiceless_redirect = "/director/router/" + story.id.to_s + "/" + story.scenes[scene.to_i - 1].option_one.to_s
     # create repsonse
     @r = Twilio::Response.new
     # play scene audio
@@ -168,6 +169,7 @@ class DirectorController < ApplicationController
     render :xml => @r.respond
   end
   
+  # TODO abstract current set up into this method
   def get_next_scene(digits, story, scene)
     next_scene = nil
     scene_index = scene.to_i - 1
