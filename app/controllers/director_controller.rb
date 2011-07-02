@@ -94,7 +94,7 @@ class DirectorController < ApplicationController
       puts 'sms: true'
 
       if twilio_number == STAGING_NUMBER
-        render 'director/story_menu.xml'
+        redirect_to '/director/story_menu'
       else
         redirect_to '/static/game_menu.xml'
       end
@@ -103,7 +103,7 @@ class DirectorController < ApplicationController
       user.save
       puts 'sms: false'
       if twilio_number == STAGING_NUMBER
-        render 'director/story_menu.xml'
+        redirect_to '/director/story_menu'
       else
         redirect_to '/static/game_menu.xml'
       end
