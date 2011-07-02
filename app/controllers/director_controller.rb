@@ -23,24 +23,13 @@ class DirectorController < ApplicationController
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
     redirect = ""
-    next_scene = nil
+    # next_scene = nil
 
     puts "Scene: " + scene
     puts "Digits: "
     
     if digits
-      if digits == "1"
-        puts "inside digit 1"
-        next_scene = story.scenes[scene_index].option_one.to_s
-        puts "next_scene: " + next_scene
-        next_scene
-      elsif digits == "2"
-        puts "inside digit 2"
-        next_scene = story.scenes[scene_index].option_two.to_s
-      else
-        puts "inside no digit found"
-        next_scene = nil
-      end
+      get_next_scene(digits, story, scene)
     else
       puts "no digits found, rendering scene"
       render_scene(story, scene)
@@ -59,7 +48,7 @@ class DirectorController < ApplicationController
       @r = Twilio::Response.new
       # wrap with gather tag
       @r.append(Twilio::Say.new("I didn't understand your response!", :voice => "man"))
-      # redirect to choice menu    
+      # redirect to choice view    
       @r.append(Twilio::Redirect.new(redirect, :method => "GET"))
 
       puts "Unknown Choice: " + @r.respond
@@ -131,7 +120,7 @@ class DirectorController < ApplicationController
       @g.append(Twilio::Play.new(story.scenes[scene.to_i - 1].choice_audio))
       # add response for no answer
       @r.append(Twilio::Say.new("Please enter a choice!", :voice => "man"))
-      # redirect to choice menu    
+      # add redirect to choice view    
       @r.append(Twilio::Redirect.new(redirect, :method => "GET"))
       puts "Scene: " + @r.respond
     end
@@ -160,22 +149,26 @@ class DirectorController < ApplicationController
     @g.append(Twilio::Play.new(story.scenes[scene_index].choice_audio))
     # add response for no answer
     @r.append(Twilio::Say.new("Please enter a choice!", :voice => "man"))
-    # redirect to choice menu    
+    # add redirect to choice view    
     @r.append(Twilio::Redirect.new(redirect, :method => "GET"))
 
     puts "Choice: " + @r.respond
     render :xml => @r.respond
   end
   
-  def get_next_scene(digits, scene)
+  def get_next_scene(digits, story, scene)
     if digits == "1"
-      next_scene = scene.option_one
+      puts "inside digit 1"
+      next_scene = story.scenes[scene_index].option_one.to_s
+      puts "next_scene: " + next_scene
+      next_scene
     elsif digits == "2"
-      next_scene = scene.option_two
+      puts "inside digit 2"
+      next_scene = story.scenes[scene_index].option_two.to_s
     else
+      puts "inside no digit found"
       next_scene = nil
     end
-    next_scene
   end
   
   # TODO delete after building alternate system
