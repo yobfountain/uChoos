@@ -28,8 +28,19 @@ class DirectorController < ApplicationController
     puts "Digits: "
     
     if digits
-      get_next_scene(digits, story, scene)
-      return next_scene
+      if digits == "1"
+        puts "inside digit 1"
+        next_scene = story.scenes[scene_index].option_one.to_s
+        puts "next_scene: " + next_scene
+        next_scene
+      elsif digits == "2"
+        puts "inside digit 2"
+        next_scene = story.scenes[scene_index].option_two.to_s
+        next_scene
+      else
+        puts "inside no digit found"
+        next_scene
+      end
     else
       puts "no digits found, rendering scene"
       render_scene(story, scene)
