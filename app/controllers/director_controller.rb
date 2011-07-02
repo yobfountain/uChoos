@@ -19,6 +19,7 @@ class DirectorController < ApplicationController
   def router
     story = Story.find_by_id(params[:story])
     scene = params[:scene]
+    scene_index = scene.to_i - 1
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
     redirect = ""
