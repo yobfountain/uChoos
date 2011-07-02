@@ -42,7 +42,7 @@ class DirectorController < ApplicationController
         next_scene = nil
       end
     else
-      puts "gonna no digits scene"
+      puts "no digits found, rendering scene"
       render_scene(story, scene)
       return
     end
@@ -145,8 +145,13 @@ class DirectorController < ApplicationController
     scene_index = scene.to_i - 1
     digits = params[:Digits]
     
+    puts "inside render_choice"
+    
     route = "director/router/" + story.id.to_s + "/" + scene
     redirect = "director/choice/" + story.id.to_s + "/" + scene
+    
+    puts "route: " + route
+    puts "redirect: " + redirect
     # create repsonse
     @r = Twilio::Response.new
     # wrap with gather tag
