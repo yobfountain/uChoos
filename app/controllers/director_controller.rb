@@ -128,11 +128,11 @@ class DirectorController < ApplicationController
     @r.append(Twilio::Play.new(audio))
     
     # Check if the scene has only option_one set
-    if story.scenes[scene.to_i - 1].choiceless?
+    if story.scenes[scene_location].choiceless?
       @r.append(Twilio::Redirect.new(choiceless_redirect, :method => "GET"))
       puts "Choiceless: " + @r.respond
     # Check if scene has no options
-    elsif story.scenes[scene.to_i - 1].final?
+    elsif story.scenes[scene_location].final?
       @r.append(Twilio::Sms.new(story.scenes[scene.to_i - 1].choice_text))
       @r.append(Twilio::Hangup.new())
       puts "Final: " + @r.respond
@@ -140,7 +140,7 @@ class DirectorController < ApplicationController
       # wrap with gather tag
       @g = @r.append(Twilio::Gather.new(:numDigits => "1", :action => route, :method => "GET", :timeout => "6"))
       # play choice audio
-      @g.append(Twilio::Play.new(story.scenes[scene.to_i - 1].choice_audio))
+      @g.append(Twilio::Play.new(story.scenes[scene_location].choice_audio))
       # add response for no answer
       @r.append(Twilio::Say.new("Please enter a choice!", :voice => "man"))
       # add redirect to choice view    
