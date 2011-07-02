@@ -119,7 +119,7 @@ class DirectorController < ApplicationController
     scene_location = scene.to_i - 1
     audio = story.scenes[scene_location].scene_audio
     
-    puts "scene location: " + scene_location.to_i
+    puts "scene location: " + scene_location.to_s
     puts "Audio: " + audio
     
     # create repsonse
