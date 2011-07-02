@@ -80,21 +80,12 @@ class DirectorController < ApplicationController
       user.can_text = true
       user.save
       puts 'sms: true'
-
-      if twilio_number == STAGING_NUMBER
-        redirect_to '/director/story_menu'
-      else
-        redirect_to '/static/game_menu.xml'
-      end
+      redirect_to '/director/story_menu'
     elsif digits == "2"
       user.can_text = false
       user.save
       puts 'sms: false'
-      if twilio_number == STAGING_NUMBER
-        redirect_to '/director/story_menu'
-      else
-        redirect_to '/static/game_menu.xml'
-      end
+      redirect_to '/director/story_menu'
     else
       #TODO make this more intelligent
       redirect_to '/static/check_sms.xml'
