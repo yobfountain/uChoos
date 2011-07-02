@@ -9,8 +9,9 @@ class DirectorController < ApplicationController
     scene_index = scene.to_i - 1
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
-    sms = user.can_text
-    # redirect = ""
+    if user
+      sms = user.can_text
+    end
     next_scene = nil
 
     puts "Scene: " + scene
