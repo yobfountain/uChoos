@@ -115,7 +115,7 @@ class DirectorController < ApplicationController
   def render_scene(story, scene)
     route = "/director/router/" + story.id.to_s + "/" + scene
     redirect = "/director/choice/" + story.id.to_s + "/" + scene
-    choiceless_redirect = "/director/router/" + story.id.to_s + "/" + story.scenes[scene.to_i].option_one.to_s
+    choiceless_redirect = "/director/router/" + story.id.to_s + "/" + story.scenes[scene.to_i - 1].option_one.to_s
     scene_location = scene.to_i - 1
     audio = story.scenes[scene_location].scene_audio
     
