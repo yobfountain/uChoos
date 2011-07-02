@@ -19,8 +19,10 @@ class ApiController < ApplicationController
     
     # route the player to the proper starting point
     if twilio_number == STAGING_NUMBER
-      puts "Last Game: " + user.last_game
-      puts "Last scene: " + user.last_scene
+      if user.last_game && user.last_scene
+        puts "Last Game: " + user.last_game
+        puts "Last scene: " + user.last_scene
+      end
       if user.last_game and !user.last_game.blank?
         puts "Redirecting to last game"
         redirect_to '/director/router/' + user.last_game + '/' + user.last_scene
