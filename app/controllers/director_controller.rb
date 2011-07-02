@@ -116,8 +116,10 @@ class DirectorController < ApplicationController
     route = "/director/router/" + story.id.to_s + "/" + scene
     redirect = "/director/choice/" + story.id.to_s + "/" + scene
     choiceless_redirect = "/director/router/" + story.id.to_s + "/" + story.scenes[scene.to_i - 1].option_one.to_s
-    audio = story.scenes[scene.to_i - 1].scene_audio
+    scene_location = scene.to_i - 1
+    audio = story.scenes[scene_location].scene_audio
     
+    puts "scene location: " + scene_location.to_i
     puts "Audio: " + audio
     
     # create repsonse
@@ -162,7 +164,7 @@ class DirectorController < ApplicationController
     
     puts "route: " + route
     puts "redirect: " + redirect
-    puts "scene_index: " + scene_index
+    puts "scene_index: " + scene_index.to_s
     # create repsonse
     @r = Twilio::Response.new
     # wrap with gather tag
