@@ -150,6 +150,7 @@ class DirectorController < ApplicationController
     end
 
     render :xml => @r.respond
+    return false
   end
 
   def render_choice
@@ -179,6 +180,7 @@ class DirectorController < ApplicationController
 
     puts "Choice: " + @r.respond
     render :xml => @r.respond
+    return
   end
   
   # TODO abstract current set up into this method
