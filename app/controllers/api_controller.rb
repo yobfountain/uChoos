@@ -13,8 +13,10 @@ class ApiController < ApplicationController
       user.mobile_number = mobile_number
       user.save!
       redirect_to '/static/new_user.xml'
+      return
     elsif user.can_text.nil?
       redirect_to '/static/check_sms.xml'
+      return
     end
     
     # route the player to the proper starting point
