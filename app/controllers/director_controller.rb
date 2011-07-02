@@ -80,7 +80,6 @@ class DirectorController < ApplicationController
     @r.append(Twilio::Redirect.new("/director/router/1/1", :method => "GET"))
     puts "Boom: " + @r.respond
     render :xml => @r.respond
-    return
   end
 
   def set_sms
