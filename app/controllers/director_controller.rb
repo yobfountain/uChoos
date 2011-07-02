@@ -22,12 +22,14 @@ class DirectorController < ApplicationController
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
     redirect = ""
+    next_scene = nil
 
     puts "Scene: " + scene
     puts "Digits: "
     
     if digits
       get_next_scene(digits, story, scene)
+      return next_scene
     else
       puts "no digits found, rendering scene"
       render_scene(story, scene)
@@ -166,9 +168,10 @@ class DirectorController < ApplicationController
     elsif digits == "2"
       puts "inside digit 2"
       next_scene = story.scenes[scene_index].option_two.to_s
+      next_scene
     else
       puts "inside no digit found"
-      next_scene = nil
+      next_scene
     end
   end
   
