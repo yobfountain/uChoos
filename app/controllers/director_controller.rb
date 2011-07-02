@@ -22,6 +22,7 @@ class DirectorController < ApplicationController
     scene_index = scene.to_i - 1
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
+    sms = user.can_text
     # redirect = ""
     next_scene = nil
 
@@ -49,14 +50,14 @@ class DirectorController < ApplicationController
       end
     else
       puts "no digits found, rendering scene"
-      render_scene(story, scene)
+      render_scene(story, scene, sms)
       return
     end
     
     if next_scene
       puts "found next_scene"
       user.save_progress!(story, next_scene)
-      render_scene(story, next_scene)
+      render_scene(story, next_scene, sms)
       return
     else
       puts "no next_scene"
@@ -112,7 +113,7 @@ class DirectorController < ApplicationController
     end
   end
 
-  def render_scene(story, scene)
+  def render_scene(story, scene, sms)
     route = "/director/router/" + story.id.to_s + "/" + scene
     redirect = "/director/choice/" + story.id.to_s + "/" + scene
     choiceless_redirect = "/director/router/" + story.id.to_s + "/" + story.scenes[scene.to_i - 1].option_one.to_s
@@ -133,7 +134,11 @@ class DirectorController < ApplicationController
       puts "Choiceless: " + @r.respond
     # Check if scene has no options
     elsif story.scenes[scene_location].final?
-      @r.append(Twilio::Sms.new(story.scenes[scene.to_i - 1].choice_text))
+      if sms
+        @r.append(Twilio::Sms.new(story.scenes[scene.to_i - 1].choice_text))
+      else
+        @r.append(Twilio::Say.new(story.scenes[scene.to_i - 1].choice_text))
+      end
       @r.append(Twilio::Hangup.new())
       puts "Final: " + @r.respond
     else
