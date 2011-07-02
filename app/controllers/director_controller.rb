@@ -78,7 +78,7 @@ class DirectorController < ApplicationController
     @r = Twilio::Response.new
     @r.append(Twilio::Play.new("/static/game_menu.mp3"))
     @r.append(Twilio::Redirect.new("/director/router/1/1", :method => "GET"))
-    puts "Boom: " + @r.respond
+    puts "Story menu response: " + @r.respond
     render :xml => @r.respond
   end
 
@@ -118,7 +118,7 @@ class DirectorController < ApplicationController
     choiceless_redirect = "/director/router/" + story.id.to_s + "/" + story.scenes[scene.to_i - 1].option_one.to_s
     audio = story.scenes[scene.to_i - 1].scene_audio
     
-    puts audio
+    puts "Audio: " + audio
     
     # create repsonse
     @r = Twilio::Response.new
@@ -162,6 +162,7 @@ class DirectorController < ApplicationController
     
     puts "route: " + route
     puts "redirect: " + redirect
+    puts "scene_index: " + scene_index
     # create repsonse
     @r = Twilio::Response.new
     # wrap with gather tag
