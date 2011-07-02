@@ -19,7 +19,6 @@ class DirectorController < ApplicationController
   def router
     story = Story.find_by_id(params[:story])
     scene = params[:scene]
-    scene_index = scene.to_i - 1
     digits = params[:Digits]
     user = User.find_by_mobile_number(params[:From])
     redirect = ""
@@ -157,6 +156,9 @@ class DirectorController < ApplicationController
   end
   
   def get_next_scene(digits, story, scene)
+    
+    scene_index = scene.to_i - 1
+    
     if digits == "1"
       puts "inside digit 1"
       next_scene = story.scenes[scene_index].option_one.to_s
