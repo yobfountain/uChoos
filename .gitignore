@@ -5,3 +5,4 @@ tmp/**/*
 config/database.yml
 .DS_Store
 features/cassettes/*
+config/setup_mail.rb

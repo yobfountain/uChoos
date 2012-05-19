@@ -33,4 +33,6 @@ gem 'twiliolib'
 group :development do
   gem 'ruby-debug19'
   # gem 'heroku_san'
+  gem 'devise'
+  gem 'jquery-rails'
 end

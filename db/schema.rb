@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110628145841) do
+ActiveRecord::Schema.define(:version => 20110703024921) do
 
   create_table "scenes", :force => true do |t|
     t.integer  "story_id"
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(:version => 20110628145841) do
     t.datetime "updated_at"
     t.string   "last_game"
     t.string   "last_scene"
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
 end

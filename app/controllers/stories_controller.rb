@@ -25,8 +25,6 @@ class StoriesController < ApplicationController
   # GET /stories/new.xml
   def new
     @story = Story.new
-    # temp solution TODO remove after adding authentication
-    @story.user_id = 1
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +41,7 @@ class StoriesController < ApplicationController
   # POST /stories.xml
   def create
     @story = Story.new(params[:story])
+    @story.user_id = current_user.id
 
     respond_to do |format|
       if @story.save

@@ -1,6 +1,10 @@
 <h3>Listing stories</h3>
 
+<% if current_user %>
 <%= link_to 'New Story', new_story_path %>
+<% else %>
+<p>Sign in to create a story</p>
+<% end %>
 
 <br /> <hr />
 

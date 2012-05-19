@@ -12,7 +12,7 @@
 
 <% @users.each_with_index do |user, count| %>
   <tr>
-    <td><%= "#{count + 1}. "  %><%= link_to "#{user.mobile_number[-4..-1]}", user %></td>
+    <td><%= "#{count + 1}. "  %><%= link_to("#{user.mobile_number[-4..-1]}", user) if user.mobile_number %></td>
     <td><%= user.name %></td>
     <td><%= user.can_text %></td>
 	<% if user.last_game.blank? or user.last_scene.blank? %>

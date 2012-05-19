@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :story_id %><br />
-    <%= f.text_field :story_id %>
-  </div>
+  <%= hidden_field_tag('scene[story_id]', @scene.story_id) %>
+
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -22,10 +20,6 @@
   <div class="field">
     <%= f.label :scene_text %><br />
     <%= text_area(:scene, :scene_text, :size => "66x20") %>
-  </div>
-  <div class="field">
-    <%= f.label :order %><br />
-    <%= f.text_field :order %>
   </div>
   <div class="field">
     <%= f.label :scene_audio %><br />
@@ -41,11 +35,20 @@
   </div>
   <div class="field">
     <%= f.label :option_one %><br />
-    <%= f.text_field :option_one %>
+	<% if @story %>
+    <%= select("scene", "option_one", @story.scenes.all.collect {|s| [ s.name, s.id ] }, { :prompt => "select scene" })%>
+	<% else %>
+	<%=	select("scene", "option_one", ["no scenes available"]) %>
+	<% end %>
+	
   </div>
   <div class="field">
     <%= f.label :option_two %><br />
-    <%= f.text_field :option_two %>
+	<% if @story %>
+    <%= select("scene", "option_two", @story.scenes.all.collect {|s| [ s.name, s.id ] }, { :prompt => "select scene" })%>
+	<% else %>
+	<%=	select("scene", "option_one", ["no scenes available"]) %>
+	<% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

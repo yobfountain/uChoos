@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b><%= @story.name %></b> by <%= @story.user.name if @story.user.name %>
-</p>
 
-<p>
-  <b>Keyword:</b>
-  <%= @story.keyword %>
+  <h3><%= @story.name %></h3>
+<p>by 
+<% if @story.user.name %>
+<%= @story.user.name %>
+<% end %> 
 </p>
 
 <p>
@@ -15,19 +14,37 @@
 </p>
 
 <p>
-  <b>Active:</b>
+  <b>Keyword:</b>
+  <%= @story.keyword %> |  
+<b>Active:</b>
   <%= @story.active %>
 </p>
 
 <p>
-  <b>Scenes</b>
-  (<%= @story.scenes.size %>)
+  <%= button_to "Add Scene", "#{@story.id}/scenes/new" %>
 </p>
-	<ol>
-		<% @story.scenes.each do |scene| %>
-		<li><%= scene.name %> (<%= scene.option_one %>, <%= scene.option_two %>)</li>
-		<% end %>
-	</ol>
+
+	<table>
+	  <tr>
+		<th>Sc. #</th>
+		<th>Title</th>
+		<th>Choice 1</th>
+		<th>Choice 2</th>
+		<th></th>
+		<th></th>
+	  </tr>
+
+	<% @story.scenes.each_with_index do |scene, count| %>
+	  <tr class="<%= cycle("even", "odd") %>">
+		<td><%= count + 1 %></td>
+		<td><%= link_to scene.name, scene %></td>
+		<td><%= scene.option_one %></td>
+		<td><%= scene.option_two %></td>
+		<td><%= link_to 'Edit', edit_scene_path(scene) %></td>
+		<td><%= link_to 'X', scene, :confirm => 'Are you sure?', :method => :delete %></td>	  
+	  </tr>
+	<% end %>
+	</table>
 
 
 <%= link_to 'Edit', edit_story_path(@story) %> |

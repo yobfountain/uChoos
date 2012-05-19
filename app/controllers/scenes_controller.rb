@@ -25,6 +25,7 @@ class ScenesController < ApplicationController
   # GET /scenes/new.xml
   def new
     @scene = Scene.new
+    @scene.story_id = params[:story_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,16 +36,18 @@ class ScenesController < ApplicationController
   # GET /scenes/1/edit
   def edit
     @scene = Scene.find(params[:id])
+    @story = Story.find_by_id(@scene.story_id)
   end
 
   # POST /scenes
   # POST /scenes.xml
   def create
     @scene = Scene.new(params[:scene])
+    story = @scene.story_id
 
     respond_to do |format|
       if @scene.save
-        format.html { redirect_to(@scene, :notice => 'Scene was successfully created.') }
+        format.html { redirect_to("/stories/#{story.to_s}", :notice => 'Scene was successfully created.') }
         format.xml  { render :xml => @scene, :status => :created, :location => @scene }
       else
         format.html { render :action => "new" }
@@ -73,10 +76,12 @@ class ScenesController < ApplicationController
   # DELETE /scenes/1.xml
   def destroy
     @scene = Scene.find(params[:id])
+    story = @scene.story_id
     @scene.destroy
 
+
     respond_to do |format|
-      format.html { redirect_to(scenes_url) }
+      format.html { redirect_to("/stories/#{story.to_s}", :notice => 'Scene was successfully deleted.') }
       format.xml  { head :ok }
     end
   end

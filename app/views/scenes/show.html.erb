@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Story:</b>
-  <%= @scene.story_id %>
-</p>
+<h3>
+  <%= @scene.story.name %>
+</h3>
 
 <p>
-  <b>Name:</b>
+  <b>Scene:</b>
   <%= @scene.name %>
 </p>
 
@@ -21,8 +20,8 @@
 </p>
 
 <p>
-  <b>Scene audio:</b>
-  <%= @scene.scene_audio %>
+  <b>Scene audio:</b> 
+  <%= link_to_unless(@scene.scene_audio.nil?, "(link)", @scene.scene_audio) %>
 </p>
 
 <p>
@@ -32,7 +31,7 @@
 
 <p>
   <b>Choice audio:</b>
-  <%= @scene.choice_audio %>
+  <%= link_to_unless(@scene.choice_audio.nil?, "(link)", @scene.choice_audio) %>
 </p>
 
 <p>

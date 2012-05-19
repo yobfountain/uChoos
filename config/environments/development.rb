@@ -1,4 +1,5 @@
 Uchoos::Application.configure do
+  
   # Settings specified here will take precedence over those in config/environment.rb
 
   # In the development environment your application's code is reloaded on
@@ -22,5 +23,11 @@ Uchoos::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  # Send emails via Gmail
+  config.action_mailer.delivery_method = :smtp
+
 end
 

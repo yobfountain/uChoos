@@ -14,6 +14,7 @@ class DirectorController < ApplicationController
     end
     next_scene = nil
 
+    # Write routing info to log
     puts "Scene: " + scene
     if digits
       puts "Digits: " + digits
@@ -64,10 +65,30 @@ class DirectorController < ApplicationController
   end
 
   def story_menu
-    @r = Twilio::Response.new
-    @r.append(Twilio::Play.new("/static/game_menu.mp3"))
-    @r.append(Twilio::Redirect.new("/director/router/1/1", :method => "GET"))
-    puts "Story menu response: " + @r.respond
+    active_stories = Story.find_all_by_active(true)
+    
+    if active_stories.size == 1
+      @r = Twilio::Response.new
+      @r.append(Twilio::Play.new("/static/game_menu.mp3"))
+      @r.append(Twilio::Redirect.new("/director/router/1/1", :method => "GET"))
+      puts "Story menu has one story: " + @r.respond
+    elsif active_stories.size == 0
+      @r = Twilio::Response.new
+      @r.append(Twilio::Say.new("There are currently no stories available. Goodbye"))
+      @r.append(Twilio::Hangup.new())
+      puts "Story menu, no stories: " + @r.respond
+    else
+      menu_text = "Welcome to you choose."
+      active_stories.each_with_index do |story, count|
+        menu_text << "Press #{count + 1} to hear #{story.name}. "
+      end
+        
+      @r = Twilio::Response.new
+      @r.append(Twilio::Say.new("There are currently #{active_stories.size.to_s} stories available."))
+      @g = @r.append(Twilio::Gather.new(:numDigits => "2", :action => '/director/tell', :method => "GET", :timeout => "6"))
+      @g.append(Twilio::Say.new(menu_text))
+      puts "Story menu, list stories: " + @r.respond
+    end
     render :xml => @r.respond
   end
 

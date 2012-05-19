@@ -1,4 +1,10 @@
 Uchoos::Application.configure do
+  
+  config.action_mailer.default_url_options = { :host => 'uchoos.com' }
+  
+  # Send emails via Gmail
+  config.action_mailer.delivery_method = :smtp
+  
   # Settings specified here will take precedence over those in config/environment.rb
 
   # The production environment is meant for finished, "live" apps.
