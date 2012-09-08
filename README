@@ -9,3 +9,19 @@ only list active stories
 modify system so that more than two choices can exist
 
 Setup
+Create new app on heroku (need heroku gem)
+Set config/environment variables (https://devcenter.heroku.com/articles/config-vars)
+	* UCHOOS_EMAIL_ADDRESS
+	* UCHOOS_EMAIL_PASSWORD
+	* UCHOOS_TWILIO_CLIENT_SECRET
+	* UCHOOS_PRODUCTION_NUMBER
+	* UCHOOS_APP_SECRET_TOKEN (http://stackoverflow.com/questions/5132152/when-you-have-secret-key-in-your-project-how-can-pushing-to-github-be-possible)
+Push app to heroku
+Rake DB
+Point twilio URL to proper URLs: 
+	* voice: http://yourapp.heroku.com/api/twilio/voice [get]
+	* sms: http://yourapp.heroku.com/static/sms.xml [get] (stubbed implementation)
+Create new user on system
+	* User.create!({:email => "guy@gmail.com", :password => "111111", :password_confirmation => "111111" })
+Should be able to log in now
+
