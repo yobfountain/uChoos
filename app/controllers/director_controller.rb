@@ -132,7 +132,7 @@ class DirectorController < ApplicationController
     if story.scenes[scene_location].choiceless?
       @r.append(Twilio::Redirect.new(choiceless_redirect, :method => "GET"))
       puts "Choiceless: " + @r.respond
-    # Check if scene has no options
+    # Check if scene has no options (aka final scene)
     elsif story.scenes[scene_location].final?
       if sms
         @r.append(Twilio::Sms.new(story.scenes[scene.to_i - 1].choice_text))
