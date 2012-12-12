@@ -23,5 +23,5 @@ Point twilio URL to proper URLs:
 	* sms: http://yourapp.heroku.com/static/sms.xml [get] (stubbed implementation)
 Create new user on system
 	* User.create!({:email => "guy@gmail.com", :password => "111111", :password_confirmation => "111111" })
-Should be able to log in now
+Should be able to log in now.
 
